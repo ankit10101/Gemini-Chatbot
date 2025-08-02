@@ -4,6 +4,8 @@
 
 This project implements an intelligent chatbot using Google's cutting-edge Gemini 1.5 Flash model. Built with Streamlit, this web application provides an intuitive interface for users to engage in dynamic conversations with an AI-powered assistant. The chatbot leverages the advanced natural language processing capabilities of the Gemini model to generate contextually relevant and insightful responses.
 
+<img width="2558" height="1377" alt="image" src="https://github.com/user-attachments/assets/38da5b6f-5ca1-45b0-a8c8-1aa72049f6bb" />
+
 ## Key Features
 
 - **Interactive Chat Interface**: A user-friendly, web-based chat interface built with Streamlit.

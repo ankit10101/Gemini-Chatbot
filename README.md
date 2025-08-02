@@ -17,85 +17,103 @@ This project implements an intelligent chatbot using Google's cutting-edge Gemin
 - **Environment Variable Support**: Securely manages API keys using environment variables.
 - **Wide-layout Design**: Optimized for a better viewing experience on larger screens.
 
-## Technical Prerequisites
+---
+
+## Run with Docker 🐳
+
+### 1. **Build the Docker Image**
+```bash
+docker build -t gemini-chatbot .
+```
+
+### 2. **Run the Container**
+Pass your Google API key as an environment variable:
+```bash
+docker run -p 8501:8501 -e GOOGLE_API_KEY=your_actual_api_key_here gemini-chatbot
+```
+
+### 3. **Open in Browser**
+Visit [http://localhost:8501](http://localhost:8501) to access the chatbot interface.
+
+---
+
+## Technical Prerequisites (Non-Docker Usage)
 
 - Python 3.6 or higher
 - A Google API key with access to the Gemini 1.5 Flash model
 - Basic understanding of Python and web applications
 
-## Detailed Installation Guide
+---
+
+## Local Installation Guide (Optional)
+
+If you prefer not to use Docker:
 
 1. **Clone the Repository**
-   ```
+   ```bash
    git clone <repository-url>
    cd <project-directory>
    ```
 
-2. **Set Up a Virtual Environment** (Optional but recommended)
-   ```
+2. **Set Up a Virtual Environment**
+   ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
    ```
 
 3. **Install Dependencies**
-   ```
+   ```bash
    pip install -r requirements.txt
    ```
 
 4. **Configure Environment Variables**
-   Create a file named `.env` in the project root directory and add your Google API key:
-   ```
+   Create a `.env` file and add your key:
+   ```env
    GOOGLE_API_KEY=your_actual_api_key_here
    ```
-   Ensure this file is listed in your `.gitignore` to prevent accidental exposure of your API key.
 
-## In-depth Usage Guide
-
-1. **Start the Streamlit Application**
-   ```
+5. **Run the Application**
+   ```bash
    streamlit run app.py
    ```
 
-2. **Access the Web Interface**
-   Open your web browser and navigate to the URL provided in the terminal (typically `http://localhost:8501`).
+---
 
-3. **Interact with the Chatbot**
-   - Type your message or question in the input field at the bottom of the page.
-   - Press Enter or click the send button to submit your message.
-   - The AI will generate and display its response in the chat interface.
-   - Your conversation history will be maintained throughout the session.
+## Project Structure
 
-## Detailed Project Structure
+- `app.py`: Core Streamlit app logic
+- `requirements.txt`: Python dependencies
+- `.env`: Environment variable config (excluded from version control)
 
-- `app.py`: The core application file containing:
-  - Streamlit UI setup and configuration
-  - Integration with the Gemini model
-  - Chat history management
-  - User input processing and response generation logic
-- `requirements.txt`: Comprehensive list of Python package dependencies
-- `.env`: Configuration file for environment variables (not included in the repository)
+---
 
-## Dependencies Explained
+## Dependencies
 
-- `streamlit`: Powers the web-based user interface and handles the application's front-end.
-- `google-generativeai`: Google's official Python client library for accessing Generative AI models like Gemini.
-- `python-dotenv`: Facilitates the loading of environment variables from the `.env` file.
+- `streamlit`: Front-end framework
+- `google-generativeai`: Gemini API integration
+- `python-dotenv`: Loads environment variables
+
+---
 
 ## Advanced Configuration
 
-The application uses Streamlit's `set_page_config` to optimize the layout:
-- `initial_sidebar_state='expanded'`: Ensures the sidebar is visible by default.
-- `layout="wide"`: Utilizes a wide layout for better space utilization on larger screens.
+The app uses `streamlit.set_page_config` to improve layout:
+- `initial_sidebar_state='expanded'`
+- `layout='wide'`
 
-## Security Considerations
+---
 
-- **API Key Protection**: Always store your Google API key in the `.env` file and never commit this file to version control.
-- **Rate Limiting**: Be aware of any rate limits imposed by the Gemini API and implement appropriate handling if necessary.
+## Security Notes
 
-## Potential Enhancements
+- **API Key Protection**: Always pass API keys via environment variables or `.env` (never hard-code them).
+- **Rate Limits**: Monitor Gemini API limits and implement retry or fallback logic as needed.
 
-1. **User Authentication**: Implement user accounts to provide personalized experiences.
-2. **Conversation Persistence**: Add database integration to store chat histories beyond the current session.
-3. **Multi-model Support**: Extend the application to switch between different AI models.
-4. **Custom Styling**: Enhance the UI with custom CSS for a unique look and feel.
-5. **Error Handling**: Implement robust error handling for API failures or rate limit exceedances.
+---
+
+## Future Enhancements
+
+- User authentication
+- Persistent chat history (e.g., using SQLite or Firebase)
+- Multi-model selection
+- Theming & custom CSS
+- Comprehensive error handling
